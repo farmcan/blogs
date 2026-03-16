@@ -15,6 +15,10 @@ draft: true
 
 如果你在朋友圈里看到一张很像海报的静态图，长按之后却突然动了起来，而且播放的是另一段完全不同的视频，这种“表里不一”的体验其实很有意思。
 
+先看一个这次真实跑出来的例子：
+
+![Qwen Live Demo](./media/qwen-live-demo.gif)
+
 我做 `isekai-live` 这个小工具，最初不是为了研究“怎么拍一张 Live Photo”，而是为了研究另一件事：能不能把 Live Photo 的封面和动态内容彻底解耦，让一张图和一段视频自由组合。
 
 比如：
@@ -24,6 +28,30 @@ draft: true
 - 用一张宠物拟人插画做封面，长按后播放宠物真实片段
 
 从内容传播的角度看，这比“做一张会动的照片”更有趣，因为它让预览和展开之间出现了反差。
+
+这组演示不是示意图，而是我实际跑出来的一条链路：
+
+- 保留原图作为封面
+- 把原始视频做成动漫风格视频
+- 最后把两者重新打包成一条可导入 Photos 的 Live Photo
+
+对应的命令大概是这样：
+
+```bash
+isekai-live ai-video \
+  --input-video test.mov \
+  --style anime \
+  --provider qwen \
+  --qwen-key YOUR_DASHSCOPE_API_KEY \
+  --output stylized.mp4
+
+isekai-live build \
+  --cover test.jpeg \
+  --video stylized.mp4 \
+  --output-dir output
+
+open output/livephoto.pvt
+```
 
 但顺着这个思路往下走，很快就会遇到一个问题：
 
