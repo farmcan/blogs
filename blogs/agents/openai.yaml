@@ -1,0 +1,3 @@
+interface:
+  display_name: "Blogs"
+  short_description: "Draft and sanitize Markdown blog posts for publication"
