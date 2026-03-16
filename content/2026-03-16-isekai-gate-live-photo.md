@@ -189,12 +189,14 @@ flowchart TD
 
 基于前面的理解，这个项目没有必要做成一个很重的系统。更合理的方式是把路径收敛成几个非常直观的命令。
 
-我最后保留的是这四个动作：
+我最后保留的是这几个动作：
 
 - `build`
 - `extract`
 - `remix`
 - `ai-cover`
+- `ai-video`
+- `export-demo`
 
 它们大致组成这样一条流程：
 
@@ -206,11 +208,15 @@ flowchart LR
     E --> A
     E --> B
     A --> F[ai-cover]
+    B --> K[ai-video]
     F --> D
+    K --> D
     D --> G[livephoto.jpg]
     D --> H[livephoto.mov]
     D --> I[livephoto.pvt]
     I --> J[Photos 导入验收]
+    D --> L[export-demo]
+    L --> M[demo.mp4 / demo.gif]
 ```
 
 这个设计对我来说有几个好处：
@@ -219,12 +225,15 @@ flowchart LR
 - `extract -> ai-cover -> remix` 可以形成自然闭环
 - 每一步都能单独验证
 - 不管是手动跑，还是后面接脚本，都比较顺手
+- 还可以直接把结果导出成适合 README 和博客展示的演示素材
 
 放到代码里，它其实也是很简单的几个模块：
 
 - `cli.py`：命令行入口和参数分发
 - `live_photo.py`：构建、提取、重混 Live Photo 资产
 - `ai_cover.py`：AI 封面生成
+- `ai_video.py`：AI 视频风格化
+- `demo_media.py`：把封面图 + 视频导出成演示 mp4 / gif
 
 我没有为了“看起来专业”去做很重的分层，因为这个项目的价值不在于架构表演，而在于把工作流尽量压短。
 
@@ -308,6 +317,34 @@ open remixed/livephoto.pvt
 ```
 
 这条路径对我来说最重要的不是“酷”，而是它真的形成了一个很短的可验证闭环。
+
+同理，另一条路径也成立：
+
+```bash
+isekai-live ai-cover \
+  --input test.jpeg \
+  --prompt "把这张照片改成高质量卡通插画风格，保留主体构图与姿态，颜色明快，细节干净" \
+  --provider qwen \
+  --qwen-key YOUR_DASHSCOPE_API_KEY \
+  --output cartoon.png
+
+isekai-live build \
+  --cover cartoon.png \
+  --video test.mov \
+  --output-dir output-ai-cover
+
+open output-ai-cover/livephoto.pvt
+```
+
+如果你想把最终效果放进 README、博客或者社交媒体里，现在也可以直接导出：
+
+```bash
+isekai-live export-demo \
+  --cover test.jpeg \
+  --video stylized.mp4 \
+  --output-mp4 demo.mp4 \
+  --output-gif demo.gif
+```
 
 ## 为什么我还是觉得这种小工具值得做
 
