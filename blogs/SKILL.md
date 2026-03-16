@@ -18,11 +18,12 @@ Do not use this skill for news fact-checking by itself. If claims depend on curr
 
 ## Quick Start
 
-1. Decide the post type in [references/blog_templates.md](/Users/levi/wrksp/blogs/blogs/references/blog_templates.md).
-2. Create a draft shell with `scripts/init_blog_post.py`.
-3. Write or revise the post in Markdown.
-4. Run the quality pass using [references/checklist.md](/Users/levi/wrksp/blogs/blogs/references/checklist.md) and [references/seo_guide.md](/Users/levi/wrksp/blogs/blogs/references/seo_guide.md).
-5. Sanitize the final draft with `scripts/sanitize_for_publish.py` before handing it off for publishing.
+1. Decide the post type in [references/blog_templates.md](references/blog_templates.md).
+2. Make scripts executable (one-time setup): `chmod +x scripts/*.py`
+3. Create a draft shell with `scripts/init_blog_post.py`.
+4. Write or revise the post in Markdown.
+5. Run the quality pass using [references/checklist.md](references/checklist.md) and [references/seo_guide.md](references/seo_guide.md).
+6. Sanitize the final draft with `scripts/sanitize_for_publish.py` before handing it off for publishing.
 
 ## Workflow
 
@@ -39,7 +40,7 @@ If any of those are missing, ask targeted questions or leave explicit placeholde
 
 ### 2. Pick A Template
 
-Use [references/blog_templates.md](/Users/levi/wrksp/blogs/blogs/references/blog_templates.md) and choose the lightest template that fits:
+Use [references/blog_templates.md](references/blog_templates.md) and choose the lightest template that fits:
 
 - `how-to`: tutorial, walkthrough, setup guide
 - `announcement`: launch, release, changelog, milestone
@@ -96,8 +97,8 @@ We are excited to share an amazing improvement to our world-class build system t
 
 Run through:
 
-- [references/checklist.md](/Users/levi/wrksp/blogs/blogs/references/checklist.md) for structure and editorial quality
-- [references/seo_guide.md](/Users/levi/wrksp/blogs/blogs/references/seo_guide.md) for title, headings, metadata, and link text
+- [references/checklist.md](references/checklist.md) for structure and editorial quality
+- [references/seo_guide.md](references/seo_guide.md) for title, headings, metadata, and link text
 
 Keep SEO subordinate to readability. Keyword stuffing, repetitive subheads, and unnatural anchor text degrade the post.
 
@@ -159,8 +160,8 @@ draft: true
 
 ## Resources
 
-- Templates: [references/blog_templates.md](/Users/levi/wrksp/blogs/blogs/references/blog_templates.md)
-- Publish checklist: [references/checklist.md](/Users/levi/wrksp/blogs/blogs/references/checklist.md)
-- SEO guide: [references/seo_guide.md](/Users/levi/wrksp/blogs/blogs/references/seo_guide.md)
-- Draft scaffolding: [scripts/init_blog_post.py](/Users/levi/wrksp/blogs/blogs/scripts/init_blog_post.py)
-- Publish sanitization: [scripts/sanitize_for_publish.py](/Users/levi/wrksp/blogs/blogs/scripts/sanitize_for_publish.py)
+- Templates: [references/blog_templates.md](references/blog_templates.md)
+- Publish checklist: [references/checklist.md](references/checklist.md)
+- SEO guide: [references/seo_guide.md](references/seo_guide.md)
+- Draft scaffolding: [scripts/init_blog_post.py](scripts/init_blog_post.py)
+- Publish sanitization: [scripts/sanitize_for_publish.py](scripts/sanitize_for_publish.py)
