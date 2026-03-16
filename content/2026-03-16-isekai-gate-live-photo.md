@@ -19,6 +19,10 @@ draft: true
 
 ![Qwen Live Demo](./media/qwen-live-demo.gif)
 
+如果把组合方式反过来，也可以得到另一种观感：封面变成风格化插画，长按后播放原始视频。
+
+![Qwen Live Demo Stylized Cover](https://raw.githubusercontent.com/farmcan/blogs/main/content/media/qwen-live-demo-stylized-cover.gif)
+
 我做 `isekai-live` 这个小工具，最初不是为了研究“怎么拍一张 Live Photo”，而是为了研究另一件事：能不能把 Live Photo 的封面和动态内容彻底解耦，让一张图和一段视频自由组合。
 
 比如：
